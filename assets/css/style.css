@@ -535,16 +535,16 @@ ul { list-style: none; }
 .hero-stats {
   position: relative;
   z-index: 1;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(255,255,255,0.1);
+  background: var(--blue);
+  border-radius: var(--radius-lg);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 28px 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
+  max-width: 1100px;
+  margin: -60px auto 0;
+  width: calc(100% - 48px);
   gap: 0;
+  box-shadow: var(--shadow-lg);
 }
 
 .hero-stat {
@@ -571,7 +571,7 @@ ul { list-style: none; }
 
 .stat-label {
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.85);
+  color: #fff;
   font-weight: 500;
 }
 
@@ -639,6 +639,26 @@ ul { list-style: none; }
 .sobre-card {
   padding: 28px 24px;
   text-align: center;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(8px);
+}
+
+.sobre-card h3 {
+  color: #fff !important;
+}
+
+.sobre-card p {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.sobre-card-icon {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.sobre-card-icon svg {
+  stroke: var(--yellow) !important;
 }
 
 .sobre-card-icon {
@@ -1048,13 +1068,21 @@ ul { list-style: none; }
 /* ---- CTA FINAL SECTION ---- */
 .cta-final {
   background: var(--gray-light);
-  padding: 48px 0;
+  padding: 0;
+  width: 100%;
 }
 
 .cta-final-inner {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 24px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.cta-final-img-clean {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: transparent;
 }
 
 .cta-final-link {
@@ -1478,7 +1506,7 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.75);
+  color: var(--yellow);
   transition: var(--transition);
 }
 
