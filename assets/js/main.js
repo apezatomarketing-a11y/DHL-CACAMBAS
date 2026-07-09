@@ -14,7 +14,60 @@ document.addEventListener('DOMContentLoaded', function () {
   initBackToTop();
   initActiveNavLinks();
   initGallery();
+  initSupabaseForm();
 });
+
+// ---- SUPABASE CONFIG ----
+const SUPABASE_URL = 'https://ljroptaaillhjjpxbdhw.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxqcm9wdGFhaWxsaGpqcHhiZGh3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2MDkwNjcsImV4cCI6MjA5OTE4NTA2N30.P5UVt-0I3rJXIYWPsY5mSpw3AhzUwt2yIvZE-884sqA';
+
+function initSupabaseForm() {
+  const form = document.getElementById('contatoForm');
+  const status = document.getElementById('formStatus');
+  const btn = document.getElementById('submitBtn');
+
+  if (!form) return;
+
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    
+    btn.disabled = true;
+    btn.innerHTML = '<span>Enviando...</span>';
+    status.className = 'form-status';
+    status.style.display = 'none';
+
+    const formData = new FormData(form);
+    const data = {
+      nome: formData.get('nome'),
+      whatsapp: formData.get('whatsapp'),
+      assunto: formData.get('assunto'),
+      mensagem: formData.get('mensagem'),
+      created_at: new Date().toISOString()
+    };
+
+    try {
+      const { error } = await supabase
+        .from('contatos')
+        .insert([data]);
+
+      if (error) throw error;
+
+      status.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+      status.classList.add('success');
+      form.reset();
+    } catch (err) {
+      console.error('Erro ao enviar:', err);
+      status.textContent = 'Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente ou use o WhatsApp.';
+      status.classList.add('error');
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<span>Enviar Mensagem</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+      status.style.display = 'block';
+    }
+  });
+}
 
 // ---- HEADER GLASSMORPHISM ON SCROLL ----
 function initHeader() {
