@@ -162,15 +162,14 @@ ul { list-style: none; }
 }
 
 .btn-secondary {
-  background: rgba(255,255,255,0.12);
-  color: #fff;
-  border: 2px solid rgba(255,255,255,0.5);
-  backdrop-filter: blur(8px);
+  background: rgba(12,55,103,0.05);
+  color: var(--blue);
+  border: 2px solid var(--blue);
 }
 
 .btn-secondary:hover {
-  background: rgba(255,255,255,0.22);
-  border-color: rgba(255,255,255,0.8);
+  background: var(--blue);
+  color: #fff;
   transform: scale(1.05) translateY(-2px);
 }
 
@@ -251,6 +250,26 @@ ul { list-style: none; }
 }
 
 .header.at-top {
+  background: transparent;
+}
+
+.header.at-top .logo-img {
+  filter: none;
+}
+
+.header.at-top .nav-link {
+  color: var(--blue);
+}
+
+.header.scrolled .logo-img {
+  filter: brightness(0) invert(1);
+}
+
+.header.scrolled .nav-link {
+  color: #fff;
+}
+
+.header.at-top .hamburger span {
   background: var(--blue);
 }
 
@@ -275,10 +294,10 @@ ul { list-style: none; }
 }
 
 .logo-img {
-  height: 48px;
+  height: 64px;
   width: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1);
+  filter: none;
 }
 
 .nav-menu {
@@ -392,7 +411,7 @@ ul { list-style: none; }
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  background: var(--blue);
+  background: var(--white);
   padding-top: 0;
 }
 
@@ -400,16 +419,16 @@ ul { list-style: none; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 70% 40%, rgba(244,180,0,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse at 20% 80%, rgba(26,79,138,0.4) 0%, transparent 50%),
-    linear-gradient(135deg, #0C3767 0%, #082a50 50%, #0a3060 100%);
+    radial-gradient(ellipse at 70% 40%, rgba(12,55,103,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(244,180,0,0.05) 0%, transparent 50%),
+    linear-gradient(135deg, #ffffff 0%, #f7f8fa 100%);
   z-index: 0;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230c3767' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   z-index: 0;
 }
 
@@ -445,19 +464,19 @@ ul { list-style: none; }
 .hero-title {
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 900;
-  color: #fff;
+  color: var(--blue);
   line-height: 1.15;
   margin-bottom: 20px;
 }
 
 .hero-title-highlight {
-  color: var(--yellow);
+  color: var(--blue);
   position: relative;
 }
 
 .hero-subtitle {
   font-size: 1.05rem;
-  color: rgba(255,255,255,0.8);
+  color: var(--text-light);
   margin-bottom: 28px;
   max-width: 480px;
   line-height: 1.7;
@@ -475,8 +494,12 @@ ul { list-style: none; }
   align-items: center;
   gap: 6px;
   font-size: 0.88rem;
-  color: rgba(255,255,255,0.9);
+  color: var(--text);
   font-weight: 500;
+}
+
+.hero-check svg {
+  stroke: var(--blue);
 }
 
 .hero-buttons {
@@ -530,7 +553,7 @@ ul { list-style: none; }
   align-items: center;
   text-align: center;
   padding: 12px 16px;
-  border-right: 1px solid rgba(255,255,255,0.1);
+  border-right: 1px solid rgba(255,255,255,0.15);
 }
 
 .hero-stat:last-child {
@@ -548,14 +571,29 @@ ul { list-style: none; }
 
 .stat-label {
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.85);
   font-weight: 500;
 }
 
 /* ---- SOBRE SECTION ---- */
 .sobre {
-  padding: 96px 0;
-  background: var(--white);
+  padding: 140px 0 96px;
+  background: var(--blue);
+  color: #fff;
+}
+
+.sobre .section-title {
+  color: #fff;
+}
+
+.sobre .section-subtitle {
+  color: rgba(255,255,255,0.7);
+}
+
+.sobre .section-tag {
+  background: rgba(255,255,255,0.1);
+  color: var(--yellow);
+  border-color: rgba(255,255,255,0.2);
 }
 
 .sobre-grid {
@@ -566,14 +604,14 @@ ul { list-style: none; }
 }
 
 .sobre-text p {
-  color: var(--text-light);
+  color: rgba(255,255,255,0.8);
   margin-bottom: 16px;
   line-height: 1.8;
   font-size: 1rem;
 }
 
 .sobre-text strong {
-  color: var(--blue);
+  color: var(--yellow);
 }
 
 .sobre-diferenciais {
@@ -589,7 +627,7 @@ ul { list-style: none; }
   gap: 8px;
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--text);
+  color: rgba(255,255,255,0.9);
 }
 
 .sobre-cards {
@@ -684,6 +722,10 @@ ul { list-style: none; }
 }
 
 .servico-card p {
+  color: var(--text-light);
+}
+
+.servico-card p {
   font-size: 0.88rem;
   color: var(--text-light);
   line-height: 1.7;
@@ -741,10 +783,18 @@ ul { list-style: none; }
 }
 
 .diferencial-card h4 {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--blue);
   margin-bottom: 8px;
+}
+
+.diferencial-card p {
+  color: var(--text-light);
+}
+
+.diferencial-icon svg {
+  stroke: var(--blue);
 }
 
 .diferencial-card p {
@@ -1009,22 +1059,34 @@ ul { list-style: none; }
 
 .cta-final-link {
   display: block;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
   transition: var(--transition);
 }
 
 .cta-final-link:hover {
   transform: scale(1.02) translateY(-4px);
-  box-shadow: var(--shadow-hover);
 }
 
-.cta-final-img {
+.cta-final-img-clean {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: var(--radius-lg);
+  background: transparent;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+}
+
+.btn-link-wa {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--blue);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.btn-link-wa:hover {
+  color: var(--yellow-dark);
+  transform: translateX(4px);
 }
 
 /* ---- ATENDIMENTO SECTION ---- */
@@ -1390,7 +1452,7 @@ ul { list-style: none; }
 }
 
 .footer-logo {
-  height: 52px;
+  height: 80px;
   width: auto;
   filter: brightness(0) invert(1);
 }

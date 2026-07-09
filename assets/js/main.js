@@ -48,23 +48,32 @@ function initSupabaseForm() {
     };
 
     try {
-      const { error } = await supabase
-        .from('contatos')
-        .insert([data]);
+      // Salvar no Supabase (Opcional, mas mantido para log)
+      await supabase.from('contatos').insert([data]);
 
-      if (error) throw error;
+      // Formatar mensagem para WhatsApp
+      const text = `Olá! Meu nome é ${data.nome}.%0A%0A*WhatsApp:* ${data.whatsapp}%0A*Assunto:* ${data.assunto}%0A*Mensagem:* ${data.mensagem}`;
+      const waUrl = `https://wa.me/5512992143698?text=${text}`;
 
-      status.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+      status.textContent = 'Mensagem preparada! Redirecionando para o WhatsApp...';
       status.classList.add('success');
-      form.reset();
+      status.style.display = 'block';
+
+      // Pequeno delay para o usuário ver a mensagem de sucesso antes do redirect
+      setTimeout(() => {
+        window.open(waUrl, '_blank');
+        btn.disabled = false;
+        btn.innerHTML = '<span>Enviar Mensagem</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+        form.reset();
+      }, 1500);
+
     } catch (err) {
-      console.error('Erro ao enviar:', err);
-      status.textContent = 'Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente ou use o WhatsApp.';
+      console.error('Erro ao processar:', err);
+      status.textContent = 'Ocorreu um erro. Por favor, tente novamente ou use o botão flutuante do WhatsApp.';
       status.classList.add('error');
-    } finally {
+      status.style.display = 'block';
       btn.disabled = false;
       btn.innerHTML = '<span>Enviar Mensagem</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
-      status.style.display = 'block';
     }
   });
 }
