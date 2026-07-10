@@ -1124,9 +1124,8 @@ ul { list-style: none; }
 }
 
 .pagamento-card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-8px) scale(1.03);
   box-shadow: var(--shadow-hover);
-}  position: relative;
 }
 
 .pagamento-icon {
@@ -1142,13 +1141,10 @@ ul { list-style: none; }
   transition: var(--transition);
 }
 
+/* Removido efeito de cor que bugava os SVGs no hover */
 .pagamento-card:hover .pagamento-icon {
-  background: linear-gradient(135deg, var(--blue), var(--blue-light));
-  border-color: var(--blue);
-}
-
-.pagamento-card:hover .pagamento-icon svg {
-  stroke: #fff;
+  background: linear-gradient(135deg, rgba(12,55,103,0.1), rgba(12,55,103,0.05));
+  transform: scale(1.1);
 }
 
 .pagamento-card h4 {
