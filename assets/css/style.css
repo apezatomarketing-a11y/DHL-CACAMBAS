@@ -1600,9 +1600,10 @@ ul { list-style: none; }
 }
 
 .footer-logo {
-  height: 80px;
+  height: 140px; /* Aumentado significativamente */
   width: auto;
   filter: brightness(0) invert(1);
+  margin-bottom: 20px;
 }
 
 .footer-desc {
