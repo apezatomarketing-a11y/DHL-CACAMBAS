@@ -1319,6 +1319,32 @@ ul { list-style: none; }
   color: var(--blue);
 }
 
+/* ---- CTA TOPO SECTION ---- */
+.cta-topo {
+  background: var(--gray-light);
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0; /* Remove espaços vazios abaixo da imagem */
+}
+
+.cta-topo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: transparent;
+}
+
+.cta-topo-link {
+  display: block;
+  transition: var(--transition);
+}
+
+.cta-topo-link:hover {
+  transform: scale(1.01);
+  filter: brightness(1.05);
+}
+
 /* ---- CONTATO SECTION ---- */
 .contato {
   padding: 96px 0;
