@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initActiveNavLinks();
   initGallery();
   initSupabaseForm();
+  initLightbox();
 });
 
 // ---- SUPABASE CONFIG ----
@@ -262,13 +263,49 @@ function initGallery() {
   if (!track) return;
 
   // Pause on hover is handled by CSS animation-play-state
-  // Ensure the animation runs correctly
   track.addEventListener('mouseenter', function () {
     track.style.animationPlayState = 'paused';
   });
 
   track.addEventListener('mouseleave', function () {
     track.style.animationPlayState = 'running';
+  });
+}
+
+// ---- LIGHTBOX GALLERY ----
+function initLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const galleryImgs = document.querySelectorAll('.gallery-slide img');
+
+  if (!lightbox || !lightboxImg || !lightboxClose) return;
+
+  galleryImgs.forEach(img => {
+    img.addEventListener('click', function() {
+      lightboxImg.src = this.src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      lightboxImg.src = '';
+    }, 300);
+  }
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      closeLightbox();
+    }
   });
 }
 
