@@ -251,7 +251,7 @@ ul { list-style: none; }
 }
 
 .logo-hero-img {
-  height: 140px;
+  height: clamp(160px, 25vw, 280px); /* Tamanho gigante e responsivo */
   width: auto;
   display: block;
   margin: 0 auto;
@@ -264,10 +264,10 @@ ul { list-style: none; }
 
 @media (max-width: 768px) {
   .logo-hero-img {
-    height: 100px;
+    height: 140px; /* Ainda bem visível no mobile */
   }
   .logo-hero-section {
-    padding: 30px 0 10px;
+    padding: 40px 0 0;
   }
 }
 
