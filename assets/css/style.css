@@ -188,10 +188,21 @@ ul { list-style: none; }
   border: 2px solid var(--blue);
 }
 
+[data-theme="dark"] .btn-secondary {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  border-color: #fff;
+}
+
 .btn-secondary:hover {
   background: var(--blue);
   color: #fff;
   transform: scale(1.05) translateY(-2px);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background: #fff;
+  color: var(--blue);
 }
 
 .btn-hero {
@@ -1301,6 +1312,19 @@ ul { list-style: none; }
 
 [data-theme="dark"] .pagamento-card p {
   color: #9ca3af;
+}
+
+[data-theme="dark"] .pagamento-icon {
+  background: rgba(244,180,0,0.05);
+  border-color: rgba(244,180,0,0.15);
+}
+
+[data-theme="dark"] .pagamento-icon svg {
+  stroke: var(--yellow);
+}
+
+[data-theme="dark"] .pagamento-icon img {
+  filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(10deg); /* Torna o ícone do Pix amarelo */
 }
 
 .pagamento-card:hover {
