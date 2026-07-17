@@ -33,6 +33,14 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
   line-height: 1.2;
+  hyphens: none;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+  }
 }
 
 a {
@@ -219,35 +227,33 @@ ul { list-style: none; }
 /* Topbar removida */
 .topbar { display: none !important; }
 
-/* ---- LOGO TOP SECTION ---- */
-.logo-top-section {
-  background: var(--white);
-  padding: 12px 0;
+/* ---- HERO INLINE LOGO ---- */
+.hero-title-wrap {
   display: flex;
-  justify-content: center;
   align-items: center;
-  border-bottom: 1px solid var(--gray);
-  transition: var(--transition);
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
-[data-theme="dark"] .logo-top-section {
-  background: #030712;
-  border-bottom-color: rgba(255,255,255,0.05);
-}
-
-.logo-top-img {
-  height: 60px;
+.hero-inline-logo {
+  height: 120px;
   width: auto;
-  transition: var(--transition);
+  flex-shrink: 0;
 }
 
-.logo-top-img:hover {
-  transform: scale(1.05);
+[data-theme="dark"] .hero-inline-logo {
+  filter: brightness(0) invert(1);
 }
 
 @media (max-width: 768px) {
-  .logo-top-img {
-    height: 45px;
+  .hero-title-wrap {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  
+  .hero-inline-logo {
+    height: 80px;
   }
 }
 
@@ -624,7 +630,7 @@ ul { list-style: none; }
   font-weight: 900;
   color: var(--blue);
   line-height: 1.15;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
 [data-theme="dark"] .hero-title {
