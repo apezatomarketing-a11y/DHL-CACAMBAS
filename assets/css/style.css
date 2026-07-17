@@ -34,11 +34,15 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
   line-height: 1.2;
   hyphens: none;
-  text-align: left;
+  text-align: center; /* Centralizado por padrão */
+}
+
+.hero-title {
+  text-align: left; /* Mantendo o título do Hero à esquerda no desktop */
 }
 
 @media (max-width: 768px) {
-  h1, h2, h3, h4, h5, h6 {
+  .hero-title {
     text-align: center;
   }
 }
@@ -134,6 +138,9 @@ ul { list-style: none; }
 .section-header {
   text-align: center;
   margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .section-tag {
@@ -157,6 +164,7 @@ ul { list-style: none; }
   font-weight: 800;
   color: var(--blue);
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .section-subtitle {
@@ -227,33 +235,37 @@ ul { list-style: none; }
 /* Topbar removida */
 .topbar { display: none !important; }
 
-/* ---- HERO INLINE LOGO ---- */
-.hero-title-wrap {
+/* ---- LOGO HERO SECTION ---- */
+.logo-hero-section {
+  background: var(--gray-light);
+  padding: 40px 0 20px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 24px;
-  margin-bottom: 24px;
 }
 
-.hero-inline-logo {
-  height: 120px;
+[data-theme="dark"] .logo-hero-section {
+  background: #030712;
+}
+
+.logo-hero-img {
+  height: 140px;
   width: auto;
-  flex-shrink: 0;
+  display: block;
+  margin: 0 auto;
+  transition: var(--transition);
 }
 
-[data-theme="dark"] .hero-inline-logo {
+[data-theme="dark"] .logo-hero-img {
   filter: brightness(0) invert(1);
 }
 
 @media (max-width: 768px) {
-  .hero-title-wrap {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
+  .logo-hero-img {
+    height: 100px;
   }
-  
-  .hero-inline-logo {
-    height: 80px;
+  .logo-hero-section {
+    padding: 30px 0 10px;
   }
 }
 
@@ -1152,6 +1164,8 @@ ul { list-style: none; }
   font-size: 0.88rem;
   color: rgba(255,255,255,0.75);
   line-height: 1.6;
+  hyphens: none !important;
+  text-align: left;
 }
 
 .como-funciona-cta {
