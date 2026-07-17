@@ -237,15 +237,17 @@ ul { list-style: none; }
 
 /* ---- LOGO HERO SECTION ---- */
 .logo-hero-section {
-  background: var(--gray-light);
-  padding: 40px 0 20px;
+  background: transparent;
+  padding: 40px 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 [data-theme="dark"] .logo-hero-section {
-  background: #030712;
+  background: transparent;
 }
 
 .logo-hero-img {
@@ -612,7 +614,7 @@ ul { list-style: none; }
   z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 24px 100px; /* Aumentado o padding inferior */
+  padding: 40px 24px 100px; /* Reduzido padding superior pois agora tem a logo acima */
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
